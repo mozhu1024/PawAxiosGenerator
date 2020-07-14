@@ -1,0 +1,25 @@
+{
+    "name": "AxiosGenerator",
+    "version": "0.1.0",
+    "description": "AxiosGenerator, an Extension for Paw",
+    "main": "index.js",
+    "repository": "http://github.com/virink/PawAxiosGenerator",
+    "author": "Virink",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "build": "rm -rf AxiosGenerator.js; ./node_modules/.bin/webpack --bail --display-error-details",
+        "clean": "rm -f AxiosGenerator.js",
+        "archive": "mkdir $npm_package_options_paw_identifier && cp README.md LICENSE \"$npm_package_options_paw_title\".js \"./$npm_package_options_paw_identifier\" && zip -r \"$npm_package_options_paw_title\".zip $npm_package_options_paw_identifier"
+    },
+    "options": {
+        "paw_identifier": "com.virzz.tools.AxiosGenerator",
+        "paw_title": "AxiosGenerator"
+    },
+    "devDependencies": {
+        "webpack": "^4.43.0",
+        "babel-core": "^6.26.3",
+        "babel-register": "^6.26.0",
+        "webpack-cli": "^3.3.12"
+    }
+}
