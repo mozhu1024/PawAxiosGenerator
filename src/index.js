@@ -3,27 +3,8 @@ const AxiosGenerator = function() {
     var self;
     self = this;
 
-    var a = {
-        "name": "Login",
-        "description": "",
-        "url": "http://pusher.tool.virzz.com/login",
-        "urlBase": "http://pusher.tool.virzz.com/login",
-        "urlQuery": "",
-        "urlParameters": {},
-        "urlParametersNames": [],
-        "method": "POST",
-        "headers": {
-            "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": "{\"username\":\"virink\",\"password\":\"123456\"}",
-        "jsonBody": {
-            "username": "virink",
-            "password": "123456"
-        }
-    }
-
     this.generateRequest = (request) => {
-        var url = request.url.replace(/(https?:\/\/[\w\.]+)/, "");
+        var url = request.url.replace(/(https?:\/\/[\w\.]+)/g, "");
         var name = request.name.replace(" ", "");
 
         var headers = request.headers
@@ -52,7 +33,6 @@ const AxiosGenerator = function() {
             args.params = ''
         }
 
-
         if (['PUT', 'POST', 'PATCH'].indexOf(request.method) >= 0) {
             config['data'] = request.jsonBody || request.body || {}
             if (Object.keys(config['data']).length) {
@@ -80,9 +60,7 @@ axios(${JSON.stringify(config, 2, '\t')})
 
     this.generate = (context, requests, options) => {
         var results;
-
         // self.options = (options || {}).inputs || {};
-
         results = requests.map((request) => {
             return self.generateRequest(request);
         });

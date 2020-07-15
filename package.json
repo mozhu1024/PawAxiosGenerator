@@ -8,18 +8,20 @@
     "license": "MIT",
     "private": false,
     "scripts": {
-        "build": "rm -rf AxiosGenerator.js; ./node_modules/.bin/webpack --bail --display-error-details",
-        "clean": "rm -f AxiosGenerator.js",
-        "archive": "mkdir $npm_package_options_paw_identifier && cp README.md LICENSE \"$npm_package_options_paw_title\".js \"./$npm_package_options_paw_identifier\" && zip -r \"$npm_package_options_paw_title\".zip $npm_package_options_paw_identifier"
+        "build": "webpack --bail --display-error-details",
+        "clean": "rm -rf ./dist",
+        "archive": "webpack && cd ./dist && zip -r9X \"./$npm_package_config_extension_name\"\".zip\" \"./$npm_package_config_extension_identifier\""
     },
-    "options": {
-        "paw_identifier": "com.virzz.tools.AxiosGenerator",
-        "paw_title": "AxiosGenerator"
+    "config": {
+        "extension_name": "AxiosGenerator",
+        "extension_identifier": "com.virzz.tools.AxiosGenerator"
     },
     "devDependencies": {
-        "webpack": "^4.43.0",
-        "babel-core": "^6.26.3",
+        "@babel/core": "^7.10.5",
+        "babel-loader": "^8.1.0",
         "babel-register": "^6.26.0",
+        "copy-webpack-plugin": "^6.0.3",
+        "webpack": "^4.43.0",
         "webpack-cli": "^3.3.12"
     }
 }
